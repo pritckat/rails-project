@@ -5,12 +5,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(params[user_params])
+       @user = User.create(user_params)
         redirect_to user_path(@user)
     end
 
     def show
-        @user = User.find_by(params[:id])
+        @user = User.find(params[:id])
     end
 
     private
