@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     end
 
     def create
-       @user = User.create(user_params)
+      @user = User.create(user_params)
+      if @user.id != nil
         redirect_to user_path(@user)
+      else
+        redirect_to new_user_path
+      end
     end
 
     def show
@@ -16,6 +20,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password, :password_confirmation)
     end
 end
