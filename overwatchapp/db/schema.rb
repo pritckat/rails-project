@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_215051) do
+ActiveRecord::Schema.define(version: 2018_10_03_220721) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.string "class"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "default"
   end
 
   create_table "team_compositions", force: :cascade do |t|
