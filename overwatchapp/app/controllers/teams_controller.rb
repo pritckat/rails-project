@@ -1,0 +1,25 @@
+class TeamsController < ApplicationController
+
+    def index
+        @teams = Teams.all 
+    end
+
+    def show
+        @team = Team.find(params[:id])
+    end
+
+    def new
+        @team = Team.new
+    end
+
+    def create
+        @team = Team.create(team_params)
+        redirect_to team_page(@team)
+    end
+
+    private
+
+    def team_params
+        params.require(:team).permit(:name)
+    end
+end
