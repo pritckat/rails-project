@@ -1,0 +1,2 @@
+class TeamComposition < ApplicationRecord
+end
