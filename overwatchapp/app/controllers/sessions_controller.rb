@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
 
     def new
-        if 
-        @user = User.new
+        if logged_in?
+            redirect_to user_path(current_user)
+        else
+            @user = User.new
+        end
     end
 
     def create
@@ -16,7 +19,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete :user_id
+        session[:user_id] = nil
         redirect_to login_path
     end
+
 end
