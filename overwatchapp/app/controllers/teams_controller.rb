@@ -10,10 +10,12 @@ class TeamsController < ApplicationController
 
     def new
         @team = Team.new
+        @user = User.find(params[:user_id])
     end
 
     def create
         @team = Team.create(team_params)
+        @team.users << User.find(params[:user_id])
         redirect_to team_path(@team)
     end
 
