@@ -3,3 +3,7 @@
 <%= user.username %>
 <% end %>
 <%= link_to "Edit Team", edit_team_path(@team)%>
+<% @team.team_compositions.each do |comp| %>
+<%= comp.name %>
+<% end %>
+<%= link_to "Create New Team Comp", new_team_team_composition_path(@team)%>

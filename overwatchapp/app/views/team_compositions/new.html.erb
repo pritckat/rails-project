@@ -1,7 +1,22 @@
-<%= form_for @comp do |f| %>
+<h2>Create A New Team Comp</h2>
+<% if @comp.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+        <% error_messages = @comp.errors.full_messages.uniq %>
+        <% error_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= form_for @comp, url: team_team_compositions_path(@team) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= f.label :notes %>
 <%= f.text_area :notes %>
+<% @chars.each do |char| %>
+<%= char.name %>
+<%= f.check_box :characters, {multiple: true}, char.id, nil %>
+<% end %>
 <%= f.submit "Create Team Comp"%>
 <% end %>

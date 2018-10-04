@@ -1,2 +1,5 @@
 <%= @comp.name %> 
 <%= @comp.notes%>
+<% @comp.characters.each do |char| %>
+<%= char.name %>
+<% end %>
