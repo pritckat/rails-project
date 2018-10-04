@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
     def new
         @team = Team.new
         @user = User.find(params[:user_id])
+        @users = User.all
     end
 
     def create
