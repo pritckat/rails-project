@@ -121,3 +121,5 @@ overwatch_characters_list.each do |name, hash|
   end
   c.save
 end
+
+base_user_list = {}

@@ -1,2 +1,5 @@
 <%= @team.name %>
+<% @team.users.each do |user| %>
+<%= user.username %>
+<% end %>
 <%= link_to "Edit Team", edit_team_path(@team)%>

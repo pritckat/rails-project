@@ -3,6 +3,5 @@
 <%= form_for @team, url: user_teams_path(@user) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= f.select :user_id, User.all.collect { |u| [u.name, u.id]}, include_blank: false %>
 <%= f.submit "Create Team"%>
 <% end %>
