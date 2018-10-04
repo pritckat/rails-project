@@ -5,8 +5,9 @@
     <p>You do not belong to any teams</p>
 <% else %>
     <% @teams.each do |team| %>
-        <%= link_to team.name, team_path(team) unless team.name == nil %>
+        <li><%= link_to team.name, team_path(team) unless team.name == nil %>
     <% end %>
 <% end %>
 <br>
 <%= link_to "Create Team", new_user_team_path(@user) %>
+<br>
