@@ -17,11 +17,6 @@ class TeamCompositionsController < ApplicationController
     def create
         @comp = TeamComposition.create(comp_params)
         @comp.team = Team.find(params[:team_id])
-        params[:team_composition][:characters].each do |id|
-            id = id.to_i
-            char = Character.find_by_id(id)
-            @comp.characters << char     
-        end
         if @comp.save
             redirect_to team_composition_path(@comp)
         else
@@ -32,6 +27,6 @@ class TeamCompositionsController < ApplicationController
     private
 
     def comp_params
-        params.require(:team_composition).permit(:notes, :name)
+        params.require(:team_composition).permit(:notes, :name, :character_ids => [])
     end
 end
