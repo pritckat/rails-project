@@ -1,7 +1,23 @@
 <h2>Create A New Team</h2>
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+        <ul>
+        <% error_messages = @team.errors.full_messages.uniq %>
+        <% error_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
 
-<%= form_for @team, url: user_teams_path(@user) do |f| %>
+<%= form_for @team do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<% unless @users == nil %>
+<% @users.each do |user| %>
+<%= user.username %>
+<%= f.check_box :user_ids, {multiple: true}, user.id, nil %>
+<% end %>
+<% end %>
 <%= f.submit "Create Team"%>
 <% end %>

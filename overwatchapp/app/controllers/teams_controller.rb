@@ -10,14 +10,19 @@ class TeamsController < ApplicationController
 
     def new
         @team = Team.new
-        @user = User.find(params[:user_id])
+       # @user = User.find(params[:user_id])
         @users = User.all
     end
 
     def create
         @team = Team.create(team_params)
-        @team.users << User.find(params[:user_id])
-        redirect_to team_path(@team)
+       # @user = User.find(params[:user_id])
+       @users = User.all
+        if @team.save
+            redirect_to team_path(@team)
+        else
+            render new_team_path
+        end
     end
 
     def edit
@@ -33,6 +38,6 @@ class TeamsController < ApplicationController
     private
 
     def team_params
-        params.require(:team).permit(:name, :user_id)
+        params.require(:team).permit(:name, :user_ids => [])
     end
 end
