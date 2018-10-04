@@ -5,7 +5,7 @@
     <p>You do not belong to any teams</p>
 <% else %>
     <% @teams.each do |team| %>
-        <%= @team.name %>
+        <%= team.name unless team.name == nil %>
     <% end %>
 <% end %>
 <br>

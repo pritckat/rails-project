@@ -18,6 +18,10 @@ class UsersController < ApplicationController
         @teams = @user.teams
     end
 
+    def index
+        @users = User.all 
+    end
+
     private
 
     def user_params
