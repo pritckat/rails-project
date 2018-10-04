@@ -17,6 +17,7 @@ class TeamCompositionsController < ApplicationController
     def create
         @comp = TeamComposition.create(comp_params)
         @comp.team = Team.find(params[:team_id])
+        raise params
         if @comp.save
             redirect_to team_composition_path(@comp)
         else

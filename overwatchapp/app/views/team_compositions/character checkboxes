@@ -1,0 +1,4 @@
+<% @chars.each do |char| %>
+<%= char.name %>
+<%= f.check_box :character_ids, {multiple: true}, char.id, nil %>
+<% end %>
