@@ -1,9 +1,9 @@
-<%= @team.name %>
+<h2><%= @team.name %></h2><br>
 <% @team.users.each do |user| %>
-<%= user.username %>
-<% end %>
+<li><%= user.username %>
+<% end %><br>
 <%= link_to "Edit Team", edit_team_path(@team)%>
 <% @team.team_compositions.each do |comp| %>
 <%= comp.name %>
-<% end %>
+<% end %><br>
 <%= link_to "Create New Team Comp", new_team_team_composition_path(@team)%>
