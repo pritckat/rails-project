@@ -10,14 +10,13 @@ class TeamsController < ApplicationController
 
     def new
         @team = Team.new
-       # @user = User.find(params[:user_id])
+        @user = User.find(params[:user_id])
         @users = User.all
     end
 
     def create
         @team = Team.create(team_params)
-       # @user = User.find(params[:user_id])
-       @users = User.all
+        @user = User.find(params[:user_id])
         if @team.save
             redirect_to team_path(@team)
         else
